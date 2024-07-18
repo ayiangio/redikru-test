@@ -1,0 +1,11 @@
+groups:
+  - name: flask-app
+    rules:
+      - alert: ServiceDownAlert
+        expr: up{job="flask-app"} == 0
+        for: 10s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Flask App is down"
+          description: "Flask App has been down for more than 10 second."
